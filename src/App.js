@@ -28,8 +28,8 @@ class App extends Component {
                 },
                 {
                     id: 4,
-                    title: "Pay Bills",
-                    description: "Pay the bills necessarily.",
+                    title: "Mow Lawn",
+                    description: "Must mow the lawn.",
                     completionStatus: true,
                 },
             ],
@@ -41,11 +41,6 @@ class App extends Component {
         this.setState({
             todos: this.state.todos.map((todo) => {
                 if (todo.id === Number(e.target.id)) {
-                    console.log({
-                        ...todo,
-                        completionStatus:
-                            todo.completionStatus === false ? true : false,
-                    });
                     return {
                         ...todo,
                         completionStatus:
@@ -58,14 +53,32 @@ class App extends Component {
         });
     };
 
-    handleDeleteTodo = (e) => {
-      e.preventDefault();
-      this.setState({todos: this.state.todos.filter(todo => {
-        if(todo.id !== Number(e.target.id)){
-          return todo;
-        }
-      })})
+    handleChangeTodo = (e) => {
+        this.setState({
+            todos: this.state.todos.map((todo) => {
+                if (todo.id === Number(e.target.id)) {
+                    return {
+                        ...todo,
+                        title: e.target.title.value,
+                        description: e.target.description,
+                    };
+                } else {
+                    return todo;
+                }
+            }),
+        });
     }
+
+    handleDeleteTodo = (e) => {
+        e.preventDefault();
+        this.setState({
+            todos: this.state.todos.filter((todo) => {
+                if (todo.id !== Number(e.target.id)) {
+                    return todo;
+                }
+            }),
+        });
+    };
 
     handleSubmit = (e) => {
         e.preventDefault();
@@ -87,6 +100,7 @@ class App extends Component {
                 <ShowNotes
                     todos={this.state.todos}
                     changeStatus={this.handleToggleStatus}
+                    changeTodo={this.handleChangeTodo}
                     deleteToDo={this.handleDeleteTodo}
                 ></ShowNotes>
             </div>
