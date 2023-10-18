@@ -54,13 +54,14 @@ class App extends Component {
     };
 
     handleChangeTodo = (e) => {
+        e.preventDefault();        
         this.setState({
             todos: this.state.todos.map((todo) => {
-                if (todo.id === Number(e.target.id)) {
+                if (todo.id === Number(e.target.id)) {                    
                     return {
                         ...todo,
-                        title: e.target.title.value,
-                        description: e.target.description,
+                        title: e.target.noteTitle.value,
+                        description: e.target.noteDescription.value,
                     };
                 } else {
                     return todo;
