@@ -54,20 +54,27 @@ class App extends Component {
     };
 
     handleChangeTodo = (e) => {
-        e.preventDefault();        
-        this.setState({
-            todos: this.state.todos.map((todo) => {
-                if (todo.id === Number(e.target.id)) {                    
-                    return {
-                        ...todo,
-                        title: e.target.noteTitle.value,
-                        description: e.target.noteDescription.value,
-                    };
-                } else {
-                    return todo;
-                }
-            }),
-        });
+        e.preventDefault();     
+        if (            
+            e.target.noteTitle.value.trim() === "" ||
+            e.target.noteDescription.value.trim() === ""
+        ) {
+            alert("Value can't be empty for Todo Title or Description");
+        } else {       
+            this.setState({
+                todos: this.state.todos.map((todo) => {
+                    if (todo.id === Number(e.target.id)) {                    
+                        return {
+                            ...todo,
+                            title: e.target.noteTitle.value,
+                            description: e.target.noteDescription.value,
+                        };
+                    } else {
+                        return todo;
+                    }
+                }),
+            });
+        }
     }
 
     handleDeleteTodo = (e) => {
@@ -83,15 +90,22 @@ class App extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        const newToDo = {
-            id: this.state.todos.length + 1,
-            title: e.target.noteTitle.value,
-            description: e.target.noteDescription.value,
-            completionStatus: false,
-        };
-        this.setState((state) => ({
-            todos: state.todos.concat(newToDo),
-        }));
+        if (            
+            e.target.noteTitle.value.trim() === "" ||
+            e.target.noteDescription.value.trim() === ""
+        ) {
+            alert("Please provide both Todo Title and Description");
+        } else {         
+            const newToDo = {
+                id: this.state.todos.length + 1,
+                title: e.target.noteTitle.value,
+                description: e.target.noteDescription.value,
+                completionStatus: false,
+            };
+            this.setState((state) => ({
+                todos: state.todos.concat(newToDo),
+            }));
+        }
     };
 
     render() {
