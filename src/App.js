@@ -84,6 +84,7 @@ class App extends Component {
                 if (todo.id !== Number(e.target.id)) {
                     return todo;
                 }
+                return(<></>)                
             }),
         });
     };
