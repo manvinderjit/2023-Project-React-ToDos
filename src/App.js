@@ -54,16 +54,16 @@ class App extends Component {
     };
 
     handleChangeTodo = (e) => {
-        e.preventDefault();     
-        if (            
+        e.preventDefault();
+        if (
             e.target.noteTitle.value.trim() === "" ||
             e.target.noteDescription.value.trim() === ""
         ) {
             alert("Value can't be empty for Todo Title or Description");
-        } else {       
+        } else {
             this.setState({
                 todos: this.state.todos.map((todo) => {
-                    if (todo.id === Number(e.target.id)) {                    
+                    if (todo.id === Number(e.target.id)) {
                         return {
                             ...todo,
                             title: e.target.noteTitle.value,
@@ -75,28 +75,30 @@ class App extends Component {
                 }),
             });
         }
-    }
+    };
 
     handleDeleteTodo = (e) => {
         e.preventDefault();
+        console.log("c");
         this.setState({
             todos: this.state.todos.filter((todo) => {
                 if (todo.id !== Number(e.target.id)) {
-                    return todo;
+                    return true;
+                } else {
+                    return false;
                 }
-                return(<></>)                
             }),
         });
     };
 
     handleSubmit = (e) => {
         e.preventDefault();
-        if (            
+        if (
             e.target.noteTitle.value.trim() === "" ||
             e.target.noteDescription.value.trim() === ""
         ) {
             alert("Please provide both Todo Title and Description");
-        } else {         
+        } else {
             const newToDo = {
                 id: this.state.todos.length + 1,
                 title: e.target.noteTitle.value,

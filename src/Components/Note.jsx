@@ -4,9 +4,9 @@ class Note extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isEditingTaskID: false,            
+            isEditingTaskID: false,
             title: this.props.todo.title,
-            description: this.props.todo.description,            
+            description: this.props.todo.description,
         };
     }
 
@@ -15,21 +15,21 @@ class Note extends Component {
     };
 
     changeNoteDetails = (e) => {
-        if(e.target.name === 'noteTitle') {
+        if (e.target.name === "noteTitle") {
             this.setState({
-            ...this.state,            
-               title: e.target.value,
-            })
+                ...this.state,
+                title: e.target.value,
+            });
         }
-        if(e.target.name === 'noteDescription') {
+        if (e.target.name === "noteDescription") {
             this.setState({
-            ...this.state,            
-               description: e.target.value,
-            })           
+                ...this.state,
+                description: e.target.value,
+            });
         }
-    }
+    };
 
-    saveNote = (e) => {        
+    saveNote = (e) => {
         this.props.saveNote(e);
         this.setState({ isEditingTaskID: false });
     };
@@ -37,10 +37,10 @@ class Note extends Component {
     deleteNote = (e) => {
         this.props.deleteNote(e);
     };
-    
+
     toggleNoteStatus = (e) => {
         this.props.toggleNoteStatus(e);
-    }
+    };
 
     render() {
         return (
@@ -65,7 +65,10 @@ class Note extends Component {
                         </>
                     ) : (
                         <>
-                            <form onSubmit={this.saveNote} id={this.props.todo.id}>
+                            <form
+                                onSubmit={this.saveNote}
+                                id={this.props.todo.id}
+                            >
                                 <div className="row-auto">
                                     <input
                                         type="text"

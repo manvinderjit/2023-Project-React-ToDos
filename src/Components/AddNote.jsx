@@ -1,8 +1,7 @@
 import { Component } from "react";
 
-class AddNote extends Component {  
-    
-    addToDo = (e) => {        
+class AddNote extends Component {
+    addToDo = (e) => {
         this.props.onSubmit(e);
     };
 
@@ -23,7 +22,7 @@ class AddNote extends Component {
                             className="form-control"
                             id="noteTitle"
                             name="noteTitle"
-                            placeholder="Add Note Title Here"                            
+                            placeholder="Add Note Title Here"
                         />
                     </div>
                     <div className="row-auto">
@@ -33,7 +32,6 @@ class AddNote extends Component {
                             id="noteDescription"
                             name="noteDescription"
                             placeholder="Add Note Description Here"
-                            
                         />
                     </div>
                     <div className="row-auto">

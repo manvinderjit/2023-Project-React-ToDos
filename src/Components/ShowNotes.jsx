@@ -1,11 +1,10 @@
 import { Component } from "react";
 import Note from "./Note";
 
-class ShowNotes extends Component {    
-
+class ShowNotes extends Component {
     toggleNoteStatus = (e) => {
         this.props.changeStatus(e);
-    };   
+    };
 
     saveNote = (e) => {
         this.props.changeTodo(e);
@@ -33,7 +32,7 @@ class ShowNotes extends Component {
                             </>
                         );
                     }
-                    return(<></>)
+                    return <></>;
                 })}
             </>
         );
